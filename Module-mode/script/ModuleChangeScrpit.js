@@ -1,0 +1,5 @@
+/**
+ * ModuleChangeScrpit
+ */
+
+var myModule;
