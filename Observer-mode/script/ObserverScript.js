@@ -102,7 +102,7 @@ window.onload=function(){
 
     function AddNewObserver(){
         var check = document.createElement("input");
-        c.type= "checkbox";
+        check.type= "checkbox";
 
         extend(new Observer() , check);
 
