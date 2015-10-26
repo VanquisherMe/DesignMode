@@ -63,4 +63,67 @@ function extend(obj , extension){
     }
 }
 
+//subject
+
+function Subject(){
+    this.observers = new ObserverList();
+}
+Subject.prototype.AddObserver=function(observer){
+    this.observers.Add(observer)
+};
+Subject.prototype.RemoveObserver=function(observer){
+    this.observers.RemoveIndexAt(this.observers.IndexOf(observer, 0))
+};
+Subject.prototype.Notify=function(context){
+    var observerCont = this.observers.Count();
+    for(var i =0; i< observerCont; i++){
+        this.observers.Get(i).Update(context)
+    }
+};
+
+//the Observer
+function Observer() {
+    this.Updata = function () {
+
+    }
+}
+
+
+window.onload=function(){
+  var   controlCheckbox = document.getElementById("mainCheckbox"),
+        addBtn = document.getElementById("addNewObserver"),
+        container = document.getElementById("observersContainer")
+
+    extend(new Subject() , controlCheckbox)
+
+    controlCheckbox["onclick"] = new Function("controlCheckbox.Notify(controlCheckbox.checked)");
+
+    addBtn["onclick"] = AddNewObserver;
+
+    function AddNewObserver(){
+        var check = document.createElement("input");
+        c.type= "checkbox";
+
+        extend(new Observer() , check);
+
+        check.Updata = function(value){
+            this.chexked = value;
+        };
+
+        controlCheckbox.AddNewObserver( check);
+
+        container.appendChild(check)
+    }
+};
+
+
+
+
+
+
+
+
+
+
+
 
